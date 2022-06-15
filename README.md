@@ -1,1 +1,5 @@
-El documento de texto llamado 'tablas' contiene el codigo de todas las tablas en postgres, asi como las funciones utilizadas y sus respectivos triggers.
+-El documento de texto llamado 'tablas' contiene el codigo de todas las tablas en postgres, asi como las funciones utilizadas y sus respectivos triggers.
+-En el documento 'conexion.php' es donde se establece la conexion con la base de datos Postgres.
+-Se debe usar XAMPP  y activar el modulo Apache.
+-La base de datos como tal se crea en pgAdmin 4.
+-En la tabla de asistencias la parte que dice 'porcentaje asistencia' muestra que porcentaje de todos los registros dice que el trabajador SI asistio a la fecha      descrita mas sin embargo el cuadro deberia de mostrar el porcentaje UNICAMENTE de los registros en la tabla, osea que cuando se escribe algo en el buscador el cuadro deberia mostrar el porcentaje de asistencia SOLO de los registros en la tabla dibujada pero el cuadro siempre muestra el porcentaje de asistencia de TODOS los registros, no hemos podido hacer que saque la informacion directamente de la tabla dibujada.
