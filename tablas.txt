@@ -1,0 +1,155 @@
+CREATE TABLE IF NOT EXISTS trabajadores(
+
+    cc bigint NOT NULL,
+    nombre character varying(100),
+    telefono bigint,
+    email character varying(100),
+    cargo character varying(100),
+    PRIMARY KEY (cc)
+);
+
+CREATE TABLE IF NOT EXISTS seminario
+(
+    id serial,
+    nombre character varying(100) C,
+    objetivo character varying(1000) ,
+    descripcion character varying(1000) ,
+    poblacion_dirigida character varying(1000) ,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS trabajador_seminario
+(
+    trabajador_id bigint,
+    seminario_id integer,
+    PRIMARY KEY (trabajador_id, seminario_id),
+    FOREIGN KEY (seminario_id)
+    REFERENCES seminario (id) 
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (trabajador_id)
+        REFERENCES trabajadores (cc)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS clase
+(
+    id_clase serial,
+    fecha date unique,
+    c_nombre varchar (100) ,
+    seminario integer,
+    PRIMARY KEY (id_clase),   
+    FOREIGN KEY (seminario)
+        REFERENCES seminario (id) 
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS asistencia
+(
+    fecha_clase date ,
+    cc_trabajador bigint,
+    estado smallint,
+    PRIMARY KEY (fecha_clase, cc_trabajador),
+    FOREIGN KEY (cc_trabajador)
+        REFERENCES trabajadores (cc) 
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (fecha_clase)
+        REFERENCES clase (fecha) 
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- funcion para insertar en asistencia--
+
+CREATE OR REPLACE FUNCTION funcion_insertar_asistencia()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+   IF ((SELECT count(fecha) FROM clase WHERE new.seminario_id = clase.seminario) > 0) THEN
+   INSERT INTO asistencia (fecha_clase, cc_trabajador, estado) 
+   SELECT fecha, NEW.trabajador_id , 0 FROM clase WHERE new.seminario_id = clase.seminario;
+   END IF;
+   RETURN null;
+END;
+$BODY$;
+
+--funcion para insertar una clase nueva en asistencia--
+
+CREATE OR REPLACE FUNCTION funcion_insertar_clase()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+   IF ((SELECT count(trabajador_id) FROM trabajador_seminario WHERE trabajador_seminario.seminario_id = new.seminario) > 0) THEN
+   INSERT INTO asistencia (fecha_clase, cc_trabajador, estado) 
+   SELECT new.fecha, trabajador_id , 0 FROM trabajador_seminario WHERE trabajador_seminario.seminario_id = new.seminario;
+   END IF;
+   RETURN null;
+END;
+$BODY$;
+
+--Funcion para borrar asistencias--
+
+CREATE OR REPLACE FUNCTION funcion_borrar_asistencia()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN   
+   DELETE FROM asistencia 
+   WHERE old.trabajador_id = asistencia.cc_trabajador 
+   AND asistencia.fecha_clase IN (select fecha from clase where old.seminario_id = clase.seminario);
+   RETURN null;
+END;
+$BODY$;
+
+--funcion para borrar una clase especifica--
+
+CREATE OR REPLACE FUNCTION funcion_borrar_clase()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN   
+   DELETE FROM asistencia 
+   WHERE old.fecha = asistencia.fecha_clase; 
+   
+   RETURN null;
+END;
+$BODY$;
+
+--trigger insertar asistencia--
+
+CREATE TRIGGER trigger_insertar_asistencia
+    AFTER INSERT
+    ON trabajador_seminario
+    FOR EACH ROW
+    EXECUTE FUNCTION funcion_insertar_asistencia();
+
+--trigger borrar asistencia--
+
+CREATE TRIGGER trigger_borrar_asistencia
+    AFTER DELETE
+    ON trabajador_seminario
+    FOR EACH ROW
+    EXECUTE FUNCTION funcion_borrar_asistencia();
+
+--trigger insertar clase--
+
+CREATE TRIGGER trigger_insertar_clase
+    AFTER INSERT
+    ON clase
+    FOR EACH ROW
+    EXECUTE FUNCTION funcion_insertar_clase();
+
+--trigger borrar clase--
+
+CREATE TRIGGER trigger_borrar_clase
+    AFTER DELETE
+    ON clase
+    FOR EACH ROW
+    EXECUTE FUNCTION funcion_borrar_clase();
+
+
