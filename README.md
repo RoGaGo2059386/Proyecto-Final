@@ -1,4 +1,4 @@
--El documento de texto llamado 'tablas' contiene el codigo de todas las tablas en postgres, asi como las funciones utilizadas y sus respectivos triggers.
+-El documento de texto llamado 'tablas' contiene el codigo de todas las tablas en postgres, asi como las funciones utilizadas y sus respectivos triggers.<br>
 -En el documento 'conexion.php' es donde se establece la conexion con la base de datos Postgres.
 -Se debe usar XAMPP  y activar el modulo Apache.
 -La base de datos como tal se crea en pgAdmin 4.
