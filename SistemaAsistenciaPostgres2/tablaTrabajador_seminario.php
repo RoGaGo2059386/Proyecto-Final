@@ -58,7 +58,7 @@ $query = pg_query($con, $sql);
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">Cerrar Seccion</a></li>
+                    <li><a class="dropdown-item" href="Login/cerrarSesion.php">Cerrar sesión</a></li>
                 </ul>
             </li>
         </ul>
@@ -92,11 +92,7 @@ $query = pg_query($con, $sql);
                         </div>
 
 
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
+                        
 
                     </div>
                 </div>

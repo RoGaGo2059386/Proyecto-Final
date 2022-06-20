@@ -9,9 +9,14 @@ $objetivo = $_POST['objetivo'];
 $descripcion = $_POST['descripcion'];
 $poblacion_dirigida = $_POST['poblacion_dirigida'];
 
-$sql = "UPDATE seminario SET  s_nombre='$nombre',objetivo='$objetivo',descripcion='$descripcion', poblacion_dirigida='$poblacion_dirigida' WHERE id='$id'";
-$query = pg_query($con, $sql);
 
-if ($query) {
-    Header("Location: tablaSeminario.php");
+if ($nombre == "") {
+    echo '<script>alert("Debe haber un nombre") </script>';
+} else {
+    $sql = "UPDATE seminario SET  nombre='$nombre',objetivo='$objetivo',descripcion='$descripcion', poblacion_dirigida='$poblacion_dirigida' WHERE id='$id'";
+    $query = pg_query($con, $sql);
+    if ($query) {
+        Header("Location: tablaSeminario.php");
+    } else {
+    }
 }

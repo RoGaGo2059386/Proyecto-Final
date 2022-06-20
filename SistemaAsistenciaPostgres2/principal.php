@@ -40,7 +40,7 @@ if ($nombre == null || $nombre == ' ') {
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $nombre ?><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="Login/cerrarSeccion.php">Cerrar Seccion</a></li>
+                    <li><a class="dropdown-item" href="Login/cerrarSesion.php">Cerrar sesión</a></li>
                 </ul>
             </li>
         </ul>
@@ -70,18 +70,8 @@ if ($nombre == null || $nombre == ' ') {
                                 <a class="nav-link" href="tablaAsistencia.php">Tabla Asistencia</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                            Acciones
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="tablaTrabajadores.php">Agregar un Trabajador</a>
-                                <a class="nav-link" href="tablaSeminario.php">Agregar un Seminario</a>
-                                <a class="nav-link" href="tablaClases.php">Agregar una Clase</a>
-                                <a class="nav-link" href="tablaClases.php">Editar una Asistencia</a>
-                            </nav>
-                        </div>
+                        
+                        
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -99,11 +89,12 @@ if ($nombre == null || $nombre == ' ') {
                     </ol>
                     <div class="card mb-4">
                         <h2 class="mt-4 ">Recomendaciones</h2>
-                        <p>1.Una vez creado un trabajador si desea modificar su cedula tendra que eliminarlo y volver a insertarlo.
-                            por lo que debera tener cuidado a la hora de eliminar ya que si elimina un trabajador estaria eliminando todos los registros relacionados (como asistencias e inscripciones)a los que ingreso.
+                        <p>1.Una vez creado un trabajador si desea modificar su cedula tendrá que eliminarlo y volver a insertarlo.
+                            por lo que deberá tener cuidado a la hora de eliminar ya que si elimina un trabajador estaría eliminando todos los registros relacionados (como asistencias e inscripciones) a los que ingreso.
+
                         </p>
-                        <p>2.Debe tener cuidado algunos campos son obligatorios ya que le saldra un error avisandole que algun campo esta vacio por lo que debera volver a ingresar
-                            los datos asegurandose de que esten correctamente diligenciados.
+                        <p>2.Debe tener cuidado algunos campos son obligatorios ya que le saldrá un error avisándole que algún campo está vacío por lo que deberá volver a ingresar
+                            los datos asegurándose de que estén correctamente diligenciados.
                         </p>
                     </div>
 

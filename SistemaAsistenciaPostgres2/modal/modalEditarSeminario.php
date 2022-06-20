@@ -10,7 +10,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-floating mb-3 mb-md-0">
-                                <input class="form-control" name="nombre" type="text" placeholder="Ingrese el nombre del seminario" value="<?php echo $row['s_nombre'] ?>">
+                                <input class="form-control" name="nombre" type="text" placeholder="Ingrese el nombre del seminario" value="<?php echo $row['nombre'] ?>">
                                 <label for="inputFirstName">Nombre del seminario</label>
                             </div>
 
@@ -20,7 +20,7 @@
                         <div class="col-md-6">
                             <div class="form-floating mb-3 mb-md-0">
                                 <strong>Objetivo</strong><br />
-                                <textarea name="objetivo" cols="60" rows="4" placeholder="objetivo"><?php echo $row['objetivo']  ?></textarea><br>
+                                <textarea name="objetivo" cols="50" rows="4" placeholder="objetivo"><?php echo $row['objetivo']  ?></textarea><br>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                             <div class="form-floating mb-3 mb-md-0">
                             <strong>Descripcion</strong><br />
-                                <textarea name="descripcion" cols="60" rows="4" placeholder="descripcion"><?php echo $row['descripcion']  ?></textarea><br>
+                                <textarea name="descripcion" cols="50" rows="4" placeholder="descripcion"><?php echo $row['descripcion']  ?></textarea><br>
 
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="col-md-6">
                             <div class="form-floating mb-3 mb-md-0">
                             <strong>Poblacion Dirigida</strong><br />
-                                <textarea name="poblacion_dirigida" cols="60" rows="4" placeholder="poblacion_dirigida"><?php echo $row['poblacion_dirigida']  ?></textarea><br>
+                                <textarea name="poblacion_dirigida" cols="50" rows="4" placeholder="poblacion_dirigida"><?php echo $row['poblacion_dirigida']  ?></textarea><br>
 
                             </div>
                         </div>

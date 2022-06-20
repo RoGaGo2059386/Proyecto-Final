@@ -9,14 +9,14 @@ if (isset($_POST['trabajador_id'])) {
     $busqueda = "SELECT count(*)  from trabajador_seminario where trabajador_id=$trabajador_id and seminario_id=$seminario_id";
 
     $repetidos = pg_query($con, $busqueda);
-
-    if ($trabajador_id == "---cedula asociada---" || $seminario_id == "---seminario---" ) {
+    
+    if($repetidos > 0){
+        echo '<script>alert("ya existe este registro"); </script>';
+    }if ($trabajador_id == "---cedula asociada---" || $seminario_id == "---seminario---" ) {
 
         echo '<script>alert("debe seleccionar un trabajador y un seminario"); </script>';
     }
-    if($repetidos > 0){
-        echo '<script>alert("ya existe este registro"); </script>';
-    } else {
+     else {
         $sql = "INSERT INTO trabajador_seminario VALUES($trabajador_id,$seminario_id)";
         $query = pg_query($con, $sql);
         if ($query) {
@@ -27,5 +27,3 @@ if (isset($_POST['trabajador_id'])) {
 
     echo "</div>";
 }
-
-?>

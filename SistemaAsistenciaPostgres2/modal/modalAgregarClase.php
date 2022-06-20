@@ -13,7 +13,7 @@ $resultado = pg_query($con, $seminario);
             <div class="modal-body">
                 <form action="InsertarClase.php" method="POST">
                     <strong>*</strong>
-                    <input type="date" class="form-control mb-3" name="fecha" placeholder="fecha " value="*">
+                    <input type="date" class="form-control mb-3" name="fecha" placeholder="fecha " value="<?php echo (new DateTime())->format('Y-m-d'); ?>">
                     <input type="text" class="form-control mb-3" name="nombre" placeholder="nombre">
                     <strong>*</strong>
                     <select name="seminario">

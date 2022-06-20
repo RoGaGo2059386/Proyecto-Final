@@ -56,7 +56,7 @@ $arr = array(1 => 'Si', 0 => 'No');
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">Cerrar Seccion</a></li>
+                    <li><a class="dropdown-item" href="Login/cerrarSesion.php">Cerrar sesión</a></li>
                 </ul>
             </li>
         </ul>
@@ -86,10 +86,6 @@ $arr = array(1 => 'Si', 0 => 'No');
                                 <a class="nav-link" href="tablaAsistencia.php">Tabla Asistencia</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                            Acciones
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
                         
                     </div>
                 </div>

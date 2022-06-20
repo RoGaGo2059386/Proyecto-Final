@@ -13,7 +13,7 @@ if (isset($_POST['nombre'])) {
     if ($nombre == "" ) {
         echo '<script>alert("Debe haber un nombre") </script>';
     } else {
-        $sql = "INSERT INTO seminario (s_nombre, objetivo, descripcion, poblacion_dirigida) VALUES('$nombre','$objetivo','$descripcion','$poblacion_dirigida')";
+        $sql = "INSERT INTO seminario (nombre, objetivo, descripcion, poblacion_dirigida) VALUES('$nombre','$objetivo','$descripcion','$poblacion_dirigida')";
         $query = pg_query($con, $sql);
         if ($query) {
             Header("Location: tablaSeminario.php");
