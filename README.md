@@ -1,8 +1,8 @@
 INTEGRANTES:<br>
-Esteban Francisco Ipial Ayala 2058485<br>
+Jefferson Montenegro Montenegro 2059348<br>
 Mario José Piedras Lenis 2059574<br>
 Ronaldo García Gonzales 2059386<br>
-Moisés Uriel Medina Villa 2058881<br>
+
 <br>
 -El documento de texto llamado 'tablas' contiene el codigo de todas las tablas en postgres, asi como las funciones utilizadas y sus respectivos triggers.<br>
 -En el documento 'conexion.php' es donde se establece la conexion con la base de datos Postgres.<br>
